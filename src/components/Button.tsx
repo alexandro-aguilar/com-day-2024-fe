@@ -1,14 +1,15 @@
 import React from 'react';
 
 interface ButtonProps {
-  className?: string
   label: string;
-  onClick: () => void;
+  type: "submit" | "reset" | "button" | undefined;
+  onClick?: () => void;
 }
 
-const Button: React.FC<ButtonProps> = ({ className, label, onClick }) => (
+const Button: React.FC<ButtonProps> = ({ label, type, onClick }) => (
   <button
-    className={ className }
+    className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline'
+    type={type}
     onClick={ onClick }
   >
     { label }

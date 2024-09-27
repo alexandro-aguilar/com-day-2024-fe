@@ -1,18 +1,38 @@
-import React, { createContext, useState, ReactNode } from 'react';
-
+import React, { createContext, useState, ReactNode, useEffect } from 'react';
+import User from '../services/User/User';
 interface UserContextType {
-  user: { username: string } | null;
-  setUser: (user: { username: string }) => void;
+  user: User | null;
+  setUser: (user: User) => void;
+  clearUser: () => void;
 }
 
 export const UserContext = createContext<UserContextType>({
   user: null,
-  setUser: () => {}
+  setUser: () => {},
+  clearUser: () => {}
 });
 
 const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [user, setUser] = useState<{ username: string } | null>(null);
-  return <UserContext.Provider value={{ user, setUser }}>{children}</UserContext.Provider>;
+  const [user, setUserState] = useState<User | null>(null);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUserState(JSON.parse(storedUser));
+    }
+  }, []);
+
+  const setUser = (user: User) => {
+    setUserState(user);
+    localStorage.setItem('user', user.toString());
+  }
+
+  const clearUser = () => {
+    setUserState(null);
+    localStorage.removeItem('user');
+  }
+
+  return <UserContext.Provider value={{ user, setUser, clearUser }}>{children}</UserContext.Provider>;
 };
 
 export default UserProvider;

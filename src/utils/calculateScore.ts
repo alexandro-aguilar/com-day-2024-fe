@@ -1,4 +1,4 @@
-import { quizQuestions } from '../services/QuizService';
+import { quizQuestions } from '../services/Quiz/QuizService';
 
 export const calculateScore = (answers: string[]): number => {
   return answers.reduce((score, answer, idx) => {
