@@ -24,7 +24,7 @@ const QuizForm: React.FC = () => {
   const getQuiz = async () => {
     setLoading(true);
     try {
-      const quiz: Quiz = await quizService.execute(user?.role as Types);
+      const quiz: Quiz = await quizService.execute(user?.profile as Types);
       setQuiz(quiz);
       setLoading(false);
     } catch(error) {

@@ -12,11 +12,11 @@ const Result: React.FC = () => {
   const { user } = useContext(UserContext);
 
   useEffect(() => {
-    calculateScore();
     saveScore();
   }, []);
 
   const saveScore = async () => {
+    calculateScore();
     try {
       const score = new Score(user?.email as string, scoreValue)
       await scoreService.execute(score)
