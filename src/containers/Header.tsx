@@ -8,6 +8,7 @@ const Header: React.FC = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
+    // Todo: clear quiz state also
     clearUser(); // Clear user data from context and localStorage
     navigate('/'); // Redirect to the registration page
   };
@@ -16,10 +17,10 @@ const Header: React.FC = () => {
     <header 
       className="text-white py-4 px-6 flex justify-between items-center header"
     >
-      <h1 className="text-xl font-bold">Quiz App</h1>
+      <h1 className="text-xl font-bold">Caylent</h1>
       {user && (
         <div className="flex items-center space-x-4">
-          <span className="text-lg">{user.email}!</span>
+          <span className="text-lg" style={{textOverflow: "ellipsis"}}>{(user.name).split(" ")[0]}</span>
           <Button label='Salir' onClick={handleLogout}/>
         </div>
       )}

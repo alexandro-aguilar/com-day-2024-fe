@@ -2,12 +2,11 @@ import { UserContext } from '../contexts/UserContext';
 import React, { Fragment, useContext } from 'react';
 import { Navigate } from 'react-router-dom';
 import Header from '../containers/Header';
-import Quiz from '../containers/Quiz';
+import QuizForm from '../containers/QuizForm';
 
 const QuizPage: React.FC = () => {
   const { user } = useContext(UserContext);
 
-  // If no user is registered, redirect to the registration page
   if (!user) {
     return <Navigate to="/" replace />;
   }
@@ -15,7 +14,7 @@ const QuizPage: React.FC = () => {
   return (
     <Fragment>
       <Header />
-      <Quiz />
+      <QuizForm />
     </Fragment>
   );
 };

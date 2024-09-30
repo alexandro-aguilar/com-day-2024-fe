@@ -3,14 +3,17 @@ import QuizQuestion from '../components/QuizQuestion';
 import QuizService from '../services/Quiz/QuizService';
 import { QuizContext } from '../contexts/QuizContext';
 import { useNavigate } from 'react-router-dom';
-import QuizEntity from '../services/Quiz/Quiz';
+import Quiz from '../services/Quiz/Quiz';
 import Answer from '../services/Quiz/Answer';
 import Question from '../services/Quiz/Question';
+import { UserContext } from '../contexts/UserContext';
+import Types from '../utils/types';
 
-const Quiz: React.FC = () => {
-  const [quiz, setQuiz] = useState<QuizEntity>();
+const QuizForm: React.FC = () => {
+  const [quiz, setQuiz] = useState<Quiz>();
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(true);
+  const { user } = useContext(UserContext);
   const { setAnswers } = useContext(QuizContext);
   const navigate = useNavigate();
   const quizService = new QuizService();
@@ -22,7 +25,7 @@ const Quiz: React.FC = () => {
   const getQuiz = async () => {
     setLoading(true);
     try {
-      const quiz: QuizEntity = await quizService.execute(1);
+      const quiz: Quiz = await quizService.execute(user?.role as Types);
       setQuiz(quiz);
       setLoading(false);
     } catch(error) {
@@ -36,7 +39,7 @@ const Quiz: React.FC = () => {
     setAnswers((prevAnswers: Answer[]) => [...prevAnswers, answer]);
 
     // Move to the next question or navigate to the result page
-    if (currentQuestion < (quiz as QuizEntity).questions.length - 1) {
+    if (currentQuestion < (quiz as Quiz).questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
       navigate('/result');  // Navigate to the result page after the quiz
@@ -64,4 +67,4 @@ const Quiz: React.FC = () => {
   );
 };
 
-export default Quiz;
+export default QuizForm;
