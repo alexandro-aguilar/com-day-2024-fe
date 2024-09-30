@@ -1,10 +1,14 @@
 import React, { useState, useContext, useEffect } from 'react';
 import QuizQuestion from '../components/QuizQuestion';
-import QuizService, { quizQuestions } from '../services/Quiz/QuizService';
+import QuizService from '../services/Quiz/QuizService';
 import { QuizContext } from '../contexts/QuizContext';
 import { useNavigate } from 'react-router-dom';
+import QuizEntity from '../services/Quiz/Quiz';
+import Answer from '../services/Quiz/Answer';
+import Question from '../services/Quiz/Question';
 
 const Quiz: React.FC = () => {
+  const [quiz, setQuiz] = useState<QuizEntity>();
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(true);
   const { setAnswers } = useContext(QuizContext);
@@ -18,7 +22,8 @@ const Quiz: React.FC = () => {
   const getQuiz = async () => {
     setLoading(true);
     try {
-      await quizService.execute(1);
+      const quiz: QuizEntity = await quizService.execute(1);
+      setQuiz(quiz);
       setLoading(false);
     } catch(error) {
       console.error('try again', error);
@@ -26,12 +31,12 @@ const Quiz: React.FC = () => {
     }
   }
 
-  const handleAnswer = (answer: string) => {
+  const handleAnswer = (answer: Answer) => {
     // Add the selected answer to the answers array
-    setAnswers((prevAnswers: string[]) => [...prevAnswers, answer]);
+    setAnswers((prevAnswers: Answer[]) => [...prevAnswers, answer]);
 
     // Move to the next question or navigate to the result page
-    if (currentQuestion < quizQuestions.length - 1) {
+    if (currentQuestion < (quiz as QuizEntity).questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
       navigate('/result');  // Navigate to the result page after the quiz
@@ -52,9 +57,8 @@ const Quiz: React.FC = () => {
   return (
     <div>
       <QuizQuestion
-        question={quizQuestions[currentQuestion].question}
-        options={quizQuestions[currentQuestion].options}
-        onAnswer={handleAnswer}
+        question={ quiz?.questions[currentQuestion] as Question }
+        onAnswer={ handleAnswer }
       />
     </div>
   );

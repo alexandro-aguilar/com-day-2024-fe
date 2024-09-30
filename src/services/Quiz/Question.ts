@@ -1,17 +1,17 @@
-import Answer from './Answer';
+import Option from './Option';
 
 export default class Question {
   private _id: number;
   private _type: number;
   private _text: string;
-  private _answers: Array<Answer>;
+  private _options: Array<Option>;
   private _rightAnswer: number;
 
-  constructor(id: number, type: number, text: string, answers: Array<Answer>, rightAnswer: number) {
+  constructor(id: number, type: number, text: string, options: Array<Option>, rightAnswer: number) {
     this._id = id;
     this._text = text;
     this._type = type;
-    this._answers = answers;
+    this._options = options;
     this._rightAnswer = rightAnswer;
   }
 
@@ -27,8 +27,8 @@ export default class Question {
     return this._text;
   }
 
-  get answers(): Array<Answer> {
-    return this._answers;
+  get options(): Array<Option> {
+    return this._options;
   }
 
   get rightAnswer(): number {
@@ -40,7 +40,7 @@ export default class Question {
       id: this._id,
       type: this._type,
       text: this._text,
-      answers: this._answers.map(answer => answer.toJson()),
+      options: this._options.map(option => option.toJson()),
       rightAnswer: this._rightAnswer
     }
   }

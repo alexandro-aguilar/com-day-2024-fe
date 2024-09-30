@@ -2,6 +2,7 @@ import axios, { AxiosResponse } from 'axios';
 import QuizQuestionsDTO from './QuizQuestionsDTO';
 import Endpoints from '../../utils/Endpoints';
 import Types from '../../utils/types';
+import Quiz from './Quiz';
 
 export interface QuizQuestion {
   question: string;
@@ -10,22 +11,11 @@ export interface QuizQuestion {
 }
 
 export default class QuizService {
-  async execute(type: Types): Promise<void> {
-    const response: AxiosResponse<QuizQuestionsDTO> = await axios.get(
+  async execute(type: Types): Promise<Quiz> {
+    const response: AxiosResponse<Array<QuizQuestionsDTO>> = await axios.get(
       `${Endpoints.getQuiz}/${type}`
     );
-    console.log(response)
+    const quiz: Quiz = Quiz.fromObject(response.data);
+    return  quiz;
   }
 }
-export const quizQuestions: QuizQuestion[] = [
-  {
-    question: "What is the capital of France?",
-    options: ["Paris", "London", "Berlin", "Madrid"],
-    correct: "Paris"
-  },
-  {
-    question: "What is the currency of the USA?",
-    options: ["Euro", "Dollar", "Pound", "Yen"],
-    correct: "Dollar"
-  }
-]

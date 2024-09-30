@@ -32,7 +32,7 @@ const RegistrationForm: React.FC = () => {
     <form onSubmit={handleSubmit}>
       <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
         <div className="bg-white shadow-md rounded-lg p-8 w-full max-w-md">
-          <h2 className="text-3xl font-semibold text-center mb-6 text-gray-800">Register</h2>
+          <h2 className="text-3xl font-semibold text-center mb-6 text-gray-800">Regístrate</h2>
           <InputField
             label="Email"
             type="text"
@@ -53,7 +53,12 @@ const RegistrationForm: React.FC = () => {
             role={role}
             onChange={(e: ChangeEvent<HTMLSelectElement>) => setRole(Number.parseInt(e.target.value))}
           />
-          <Button type="submit" label="Register" />
+          <Button type="submit" label="Join the Rocketship" />
+          <div>
+            <center className="info">
+              <a href="https://caylent.com/">¿Qué es Caylent?</a>
+            </center>
+          </div>
         </div>
       </div>
     </form>

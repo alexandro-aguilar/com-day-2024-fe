@@ -6,3 +6,20 @@
 div {
   font-family: "helvetica"
 }
+
+.header {
+  background-color: rgb(22, 22, 22)
+}
+
+.primary-button {
+  background-color: rgb(114, 174, 122)
+}
+
+.primary-button:hover {
+  background-color:  rgb(94, 154, 102)
+}
+
+.info {
+  color: rgb(114, 174, 122);
+  margin-top: 1rem;
+}

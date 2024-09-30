@@ -1,24 +1,17 @@
 export default class Answer {
-  private _id: number;
-  private _text: string;
+  private _question: number;
+  private _answer: number;
 
-  constructor(id: number, text: string) {
-    this._id = id;
-    this._text = text;
+  constructor(question: number, answer: number) {
+    this._question = question;
+    this._answer = answer;
   }
 
-  get id(): number {
-    return this._id;
+  get question(): number {
+    return this._question;
   }
 
-  get text(): string {
-    return this._text;
-  }
-
-  toJson() {
-    return {
-      id: this._id,
-      text: this._text
-    }
+  get answer(): number {
+    return this._answer;
   }
 }
