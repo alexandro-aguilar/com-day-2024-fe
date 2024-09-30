@@ -3,12 +3,12 @@ import Types from '../../utils/types';
 export default class User {
   private _email: string;
   private _name: string;
-  private _role: Types;
+  private _profile: Types;
 
-  constructor(email: string, name: string, role: Types) {
+  constructor(email: string, name: string, profile: Types) {
     this._email = email;
     this._name = name;
-    this._role = role;
+    this._profile = profile;
   }
 
   get email(): string {
@@ -19,15 +19,15 @@ export default class User {
     return this._name;
   }
 
-  get role(): Types {
-    return this._role;
+  get profile(): Types {
+    return this._profile;
   }
 
   toObject(): object {
     return {
       email: this._email,
       name: this._name,
-      role: this._role
+      profile: this._profile
     }
   }
 
