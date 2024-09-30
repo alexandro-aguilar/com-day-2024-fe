@@ -4,13 +4,17 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
 import { UserContext } from '../contexts/UserContext';
 import Header from '../containers/Header';
+import { QuizContext } from '../contexts/QuizContext';
 
 const ResultPage: React.FC = () => {
   const navigate = useNavigate();
-  const { user } = useContext(UserContext);
+  const { user, clearUser } = useContext(UserContext);
+  const { clearQuiz, clearAnswers } = useContext(QuizContext);
 
   const handleGoBack = () => {
-    // Navigate back to the registration page
+    clearUser();
+    clearQuiz();
+    clearAnswers();
     navigate('/');
   };
 

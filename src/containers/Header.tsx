@@ -2,15 +2,18 @@ import React, { useContext } from 'react';
 import { UserContext } from '../contexts/UserContext';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/Button';
+import { QuizContext } from '../contexts/QuizContext';
 
 const Header: React.FC = () => {
   const { user, clearUser } = useContext(UserContext);
+  const { clearAnswers, clearQuiz } = useContext(QuizContext);
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // Todo: clear quiz state also
-    clearUser(); // Clear user data from context and localStorage
-    navigate('/'); // Redirect to the registration page
+    clearQuiz();
+    clearAnswers();
+    clearUser();
+    navigate('/');
   };
 
   return (

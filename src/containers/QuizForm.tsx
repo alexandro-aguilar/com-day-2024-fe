@@ -10,11 +10,10 @@ import { UserContext } from '../contexts/UserContext';
 import Types from '../utils/types';
 
 const QuizForm: React.FC = () => {
-  const [quiz, setQuiz] = useState<Quiz>();
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(true);
   const { user } = useContext(UserContext);
-  const { setAnswers } = useContext(QuizContext);
+  const { setAnswers, setQuiz, quiz } = useContext(QuizContext);
   const navigate = useNavigate();
   const quizService = new QuizService();
 
