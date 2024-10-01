@@ -16,21 +16,21 @@ const Result: React.FC = () => {
   }, []);
 
   const saveScore = async () => {
-    calculateScore();
+    const score: number = calculateScore();
+    setScore(score);
     try {
-      const score = new Score(user?.email as string, scoreValue)
-      await scoreService.execute(score)
+      await scoreService.execute(new Score(user?.email as string, score))
     } catch(error) {
       console.error(error);
     }
   }
 
-  const calculateScore = () => {
+  const calculateScore = (): number => {
     const score: number = answers.reduce((prev, curr) => {
       const question = quiz?.questions.find(question => question.id === curr.question);
       return question?.rightAnswer === curr.answer ? prev + 1 : prev;
     }, 0);
-    setScore(score);
+    return score;
   }
 
   return <ResultCard score={ scoreValue } total={answers.length} />;
