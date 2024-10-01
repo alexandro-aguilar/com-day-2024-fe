@@ -33,7 +33,7 @@ const Result: React.FC = () => {
     setScore(score);
   }
 
-  return <ResultCard score={scoreValue} total={answers.length} />;
+  return <ResultCard score={ scoreValue } total={answers.length} />;
 };
 
 export default Result;

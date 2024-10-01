@@ -8,6 +8,7 @@ import Answer from '../services/Quiz/Answer';
 import Question from '../services/Quiz/Question';
 import { UserContext } from '../contexts/UserContext';
 import Types from '../utils/types';
+import LoadingScreen from '../components/LoadingScreen';
 
 const QuizForm: React.FC = () => {
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
@@ -47,12 +48,7 @@ const QuizForm: React.FC = () => {
 
   if(loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-100">
-        <div className="text-center">
-          <p className="text-2xl font-semibold mb-4">Loading Quiz...</p>
-          <div className="loader border-t-4 border-blue-500 rounded-full w-16 h-16 animate-spin"></div>
-        </div>
-      </div>
+      <LoadingScreen />
     );
   }
 

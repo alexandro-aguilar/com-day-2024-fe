@@ -5,8 +5,8 @@ import ComboBox from '../components/ComboBox';
 import { useNavigate } from 'react-router-dom';
 import InputField from '../components/InputField';
 import { UserContext } from '../contexts/UserContext';
-import React, { useState, useContext, ChangeEvent, FormEvent } from 'react';
 import UserService from '../services/User/UserService';
+import React, { useState, useContext, ChangeEvent, FormEvent } from 'react';
 
 const RegistrationForm: React.FC = () => {
   const [email, setEmail] = useState<string>('');
