@@ -58,6 +58,11 @@ const QuizForm: React.FC = () => {
         question={ quiz?.questions[currentQuestion] as Question }
         onAnswer={ handleAnswer }
       />
+      <div>
+        <center>
+          {`${currentQuestion + 1}/${quiz?.questions.length}`}
+        </center>
+      </div>
     </div>
   );
 };
