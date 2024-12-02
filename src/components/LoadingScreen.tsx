@@ -4,11 +4,11 @@ const LoadingScreen: React.FC = () => {
   const [index, setIndex] = useState<number>(0);
 
   const messages = [
-    '¿Sabías que AWS tiene más servidores que tacos hay en la Condesa un viernes por la noche? ¡Y eso ya es decir mucho!',
-    'La nube de AWS es tan grande que podrías guardar todas las recetas de mole de todas las abuelas mexicanas... ¡y aún te sobraría espacio!',
-    'Si cada instancia EC2 fuera un chile, AWS tendría suficientes para hacer el mole más picante del universo. ¡Hasta el Chapulín Colorado diría "¡No contaban con mi astucia!" al probarlo!',
-    'AWS tiene centros de datos en tantos países que podrías hacer una vuelta al mundo más rápido que decir "¡Ándale, ándale!". Y sí, también tienen uno en México.',
-    'La capacidad de almacenamiento de AWS S3 es tan grande que podrías guardar cada grano de arena de todas las playas de Cancún... ¡y aún tendrías espacio para las sombrillas!'
+    'AWS re:Invent, held annually in Las Vegas since 2012, attracts over 60,000 tech professionals who take over the Strip during the conference.',
+    'Major Las Vegas casino companies like MGM Resorts and Caesars Entertainment rely on AWS for their cloud computing infrastructure.',
+    'Nevada hosts several AWS data centers, leveraging the states favorable tax policies and low-cost electricity.',
+    'Las Vegass 24/7 culture makes it an ideal testing ground for AWS cloud computing innovations.',
+    'During re:Invent, the city transforms from an entertainment capital to a global tech networking hub, turning hotel spaces into cloud computing showcases.'
   ]
 
   useEffect(() => {
