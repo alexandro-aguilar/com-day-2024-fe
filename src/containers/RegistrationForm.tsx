@@ -32,6 +32,10 @@ const RegistrationForm: React.FC = () => {
     <form onSubmit={handleSubmit}>
       <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
         <div className="bg-white shadow-md rounded-lg p-8 w-full max-w-md">
+          <div className="logo-container">
+            <img src="/logo.png" alt="" className="logo" />
+          </div>
+          
           <h2 className="text-3xl font-semibold text-center mb-6 text-gray-800">Sign-up</h2>
           <InputField
             label="Email"
