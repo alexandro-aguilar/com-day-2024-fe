@@ -33,7 +33,7 @@ div {
 
 .logo-container {
   display: flex;
-  width: 100%;
+  width: 30%;
   align-items: center;
-  justify-content: center
+  justify-content: center;
 }
