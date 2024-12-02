@@ -45,7 +45,7 @@ const QuizQuestion: React.FC<QuizQuestionProps> = ({ question, onAnswer }) => {
         </label>
         ))}
         <br />
-        <Button type="submit" label="Siguiente" disabled={ !selectedOption } />
+        <Button type="submit" label="Next" disabled={ !selectedOption } />
       </form>
     </div>
   );
