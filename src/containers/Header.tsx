@@ -24,7 +24,7 @@ const Header: React.FC = () => {
       {user && (
         <div className="flex items-center space-x-4">
           <span className="text-lg" style={{textOverflow: "ellipsis"}}>{(user.name).split(" ")[0]}</span>
-          <Button label='Salir' onClick={handleLogout}/>
+          <Button label='Exit' onClick={handleLogout}/>
         </div>
       )}
     </header>
