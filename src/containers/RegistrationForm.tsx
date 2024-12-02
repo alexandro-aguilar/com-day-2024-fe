@@ -56,7 +56,7 @@ const RegistrationForm: React.FC = () => {
           <Button type="submit" label="Join the Rocketship" />
           <div>
             <center className="info">
-              <a href="https://caylent.com/">¿Qué es Caylent?</a>
+              <a href="https://caylent.com/">¿What's Caylent?</a>
             </center>
           </div>
         </div>
