@@ -31,7 +31,7 @@ const RegistrationForm: React.FC = () => {
   return (
     <form onSubmit={handleSubmit}>
       <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
-        <div className="logo-container">
+        <div className="logo-container p-8 w-full max-w-md">
           <img src="/logo.png" alt="" style={{ width: '50%' }} />
         </div>
         <div className="bg-white shadow-md rounded-lg p-8 w-full max-w-md">

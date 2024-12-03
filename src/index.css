@@ -33,7 +33,8 @@ div {
 
 .logo-container {
   display: flex;
-  width: 30%;
   align-items: center;
   justify-content: center;
+  margin-bottom: 0.87em;
+  padding: 0 !important
 }
